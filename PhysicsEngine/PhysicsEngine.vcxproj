@@ -140,10 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\PhysicsWorld.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\Object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Circle.h" />
+    <ClInclude Include="include\Object.h" />
+    <ClInclude Include="include\PhysicsWorld.h" />
     <ClInclude Include="include\Renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

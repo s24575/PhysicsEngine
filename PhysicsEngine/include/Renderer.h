@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PhysicsWorld.h"
+
 #include <SFML/Graphics.hpp>
 
 #include <cstdint>
@@ -10,7 +12,7 @@ public:
 	Renderer();
 
 	void OnResize(uint32_t width, uint32_t height);
-	void Render(sf::RenderWindow& window);
+	void Render(sf::RenderWindow& window, const PhysicsWorld& physicsWorld);
 private:
 	sf::CircleShape m_Circle;
 	sf::VertexArray m_VertexArray;

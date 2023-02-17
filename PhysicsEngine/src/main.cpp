@@ -2,6 +2,8 @@
 
 #include "Renderer.h"
 
+#include "Circle.h"
+
 int main()
 {
     uint32_t width = 640;
@@ -9,6 +11,9 @@ int main()
     sf::RenderWindow window(sf::VideoMode(640, 480), "Hello World");
 
     Renderer renderer;
+    PhysicsWorld physicsWorld;
+    Object circle = Circle(10.0f);
+    physicsWorld.AddObject(&circle);
 
     while (window.isOpen())
     {
@@ -32,7 +37,7 @@ int main()
         window.clear();
 
         renderer.OnResize(width, height);
-        renderer.Render(window);
+        renderer.Render(window, physicsWorld);
 
         window.display();
     }
