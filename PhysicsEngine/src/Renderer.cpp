@@ -23,8 +23,9 @@ void Renderer::Render(sf::RenderWindow& window, const PhysicsWorld& physicsWorld
     for (const auto& entry : physicsWorld.GetObjects())
     {
         Object* object = entry.second;
+        object->update();
         object->draw(window, sf::RenderStates());
     }
-    window.draw(m_VertexArray);
+    //window.draw(m_VertexArray);
     //window.draw(m_Circle);
 }

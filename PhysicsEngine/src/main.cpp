@@ -4,6 +4,8 @@
 
 #include "Circle.h"
 
+#include <iostream>
+
 int main()
 {
     uint32_t width = 640;
@@ -11,10 +13,16 @@ int main()
     sf::RenderWindow window(sf::VideoMode(640, 480), "Hello World");
 
     Renderer renderer;
+
+    float radius = 10.0f;
+    sf::Vector2f position(0, (float)height / 2 - radius);
+    Circle circle(position, 1.0f, radius);
+    circle.Velocity = sf::Vector2f(50.0f, -25.0f);
+
     PhysicsWorld physicsWorld;
-    Object circle = Circle(10.0f);
     physicsWorld.AddObject(&circle);
 
+    sf::Clock clock;
     while (window.isOpen())
     {
         sf::Event event;
@@ -34,10 +42,16 @@ int main()
             }
         }
 
+        // UPDATE
+        float deltaTime = clock.restart().asSeconds();
+        physicsWorld.Step(deltaTime);
+
         window.clear();
 
+        // RENDER
         renderer.OnResize(width, height);
         renderer.Render(window, physicsWorld);
+        //circle.draw(window, sf::RenderStates());
 
         window.display();
     }

@@ -1,5 +1,7 @@
 #include "PhysicsWorld.h"
 
+#include <iostream>
+
 void PhysicsWorld::AddObject(Object* object)
 {
 	if (object)
@@ -25,10 +27,13 @@ void PhysicsWorld::Step(float dt)
 		if (!object)
 			continue;
 
-		object->Force += object->Mass * m_Gravity;
+		object->Force = object->Mass * m_Gravity;
+
+		std::cout << object->Velocity.y << '\n';
 		object->Velocity += object->Force / object->Mass * dt;
 		object->Position += object->Velocity * dt;
 
 		object->Force = sf::Vector2f(0.0f, 0.0f);
+
 	}
 }

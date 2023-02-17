@@ -4,7 +4,9 @@
 
 struct Object : public sf::Drawable, public sf::Transformable
 {
-	Object()
+	Object(sf::Vector2f pos, float mass)
+		: Mass(mass),
+		  Position(pos)
 	{
 		Id = uniqueId;
 		uniqueId++;
@@ -12,11 +14,12 @@ struct Object : public sf::Drawable, public sf::Transformable
 
 	static uint32_t uniqueId;
 
-	uint32_t Id;
-	sf::Vector2f Position;
-	sf::Vector2f Velocity;
-	sf::Vector2f Force;
-	float Mass;
+	uint32_t Id = -1;
+	sf::Vector2f Position{ 0.0f, 0.0f };
+	sf::Vector2f Velocity{ 0.0f, 0.0f };
+	sf::Vector2f Force{ 0.0f, 0.0f };
+	float Mass = 0.0f;
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override {}
+	virtual void update() {}
 };
