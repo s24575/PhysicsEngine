@@ -2,7 +2,7 @@
 
 #include "Object.h"
 
-#include <unordered_map>
+#include <vector>
 
 class PhysicsWorld
 {
@@ -12,8 +12,8 @@ public:
 	void RemoveObject(Object* object);
 	void Step(float dt);
 
-	std::unordered_map<uint64_t, Object*> GetObjects() const { return m_Objects; }
+	std::vector<Object*> GetObjects() const { return m_Objects; }
 private:
-	std::unordered_map<uint64_t, Object*> m_Objects;
+	std::vector<Object*> m_Objects;
 	const sf::Vector2f m_Gravity{ 0.0f, 9.81f };
 };
