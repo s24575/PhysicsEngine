@@ -142,12 +142,19 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\PhysicsWorld.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\Solver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Circle.h" />
+    <ClInclude Include="include\collision\colliders\CircleCollider.h" />
+    <ClInclude Include="include\collision\colliders\Collider.h" />
+    <ClInclude Include="include\collision\CollisionPoints.h" />
     <ClInclude Include="include\Object.h" />
     <ClInclude Include="include\PhysicsWorld.h" />
+    <ClInclude Include="include\Plane.h" />
     <ClInclude Include="include\Renderer.h" />
+    <ClInclude Include="include\Solver.h" />
+    <ClInclude Include="include\Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
