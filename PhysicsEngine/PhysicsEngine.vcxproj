@@ -139,6 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\collision\CollisionAlgorithms.h" />
+    <ClCompile Include="src\collision\colliders\CircleCollider.cpp" />
+    <ClCompile Include="src\collision\colliders\LineCollider.cpp" />
+    <ClCompile Include="src\collision\CollisionAlgorithms.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\PhysicsWorld.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
@@ -148,6 +152,8 @@
     <ClInclude Include="include\Circle.h" />
     <ClInclude Include="include\collision\colliders\CircleCollider.h" />
     <ClInclude Include="include\collision\colliders\Collider.h" />
+    <ClInclude Include="include\collision\colliders\LineCollider.h" />
+    <ClInclude Include="include\collision\Collision.h" />
     <ClInclude Include="include\collision\CollisionPoints.h" />
     <ClInclude Include="include\Object.h" />
     <ClInclude Include="include\PhysicsWorld.h" />

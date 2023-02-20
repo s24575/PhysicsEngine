@@ -11,6 +11,7 @@ public:
 	void AddObject(Object* object);
 	void RemoveObject(Object* object);
 	void Step(float dt);
+	void ResolveCollisions(float dt);
 
 	std::vector<Object*> GetObjects() const { return m_Objects; }
 private:
