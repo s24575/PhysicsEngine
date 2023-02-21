@@ -143,6 +143,7 @@
     <ClCompile Include="src\collision\colliders\CircleCollider.cpp" />
     <ClCompile Include="src\collision\colliders\LineCollider.cpp" />
     <ClCompile Include="src\collision\CollisionAlgorithms.cpp" />
+    <ClCompile Include="src\collision\CollisionPoints.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\PhysicsWorld.cpp" />
     <ClCompile Include="src\Renderer.cpp" />

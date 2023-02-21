@@ -6,7 +6,7 @@
 #include "colliders/LineCollider.h"
 
 namespace algo {
-	CollisionPoints FindCircleCircleCollisionPoints(const CircleCollider* a, const Transform* at, const CircleCollider* b, const Transform* bt);
-	CollisionPoints FindCircleLineCollisionPoints(const CircleCollider* a, const Transform* at, const LineCollider* b, const Transform* bt);
-	CollisionPoints FindLineCircleCollisionPoints(const LineCollider* a, const Transform* at, const CircleCollider* b, const Transform* bt);
+	CollisionPoints FindCircleCircleCollisionPoints(const CircleCollider* a, const Transform* ta, const CircleCollider* b, const Transform* tb);
+	CollisionPoints FindCircleLineCollisionPoints(const CircleCollider* a, const Transform* ta, const LineCollider* b, const Transform* tb);
+	CollisionPoints FindLineCircleCollisionPoints(const LineCollider* a, const Transform* ta, const CircleCollider* b, const Transform* tb);
 }
