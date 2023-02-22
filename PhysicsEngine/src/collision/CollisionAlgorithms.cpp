@@ -23,7 +23,7 @@ namespace algo {
 		if (distanceSquared < radiusSumSquared)
 		{
 			if (distanceSquared == 0.0f) {
-				// The circles are perfectly inside each other, offset one of them to the right
+				// The circles are perfectly inside each other, offset one of them to the top
 				aPos.y += aRadius;
 				bPos.y += bRadius;
 				return { aPos, bPos, sf::Vector2f{0.0f, 1.0f}, std::max(aRadius, bRadius), true};
@@ -50,6 +50,6 @@ namespace algo {
 
 	CollisionPoints FindLineCircleCollisionPoints(const LineCollider* a, const Transform* ta, const CircleCollider* b, const Transform* tb)
 	{
-		return {};
+		return FindCircleLineCollisionPoints(b, tb, a, ta);
 	}
 }

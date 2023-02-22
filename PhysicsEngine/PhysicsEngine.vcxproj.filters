@@ -27,9 +27,6 @@
     <ClCompile Include="src\collision\colliders\CircleCollider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\collision\CollisionAlgorithms.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\collision\colliders\LineCollider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -47,10 +44,10 @@
     <ClInclude Include="include\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Circle.h">
+    <ClInclude Include="include\objects\Circle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Object.h">
+    <ClInclude Include="include\objects\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\PhysicsWorld.h">
@@ -59,7 +56,7 @@
     <ClInclude Include="include\Solver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Transform.h">
+    <ClInclude Include="include\objects\Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\collision\colliders\Collider.h">
@@ -68,7 +65,7 @@
     <ClInclude Include="include\collision\CollisionPoints.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Plane.h">
+    <ClInclude Include="include\objects\Line.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\collision\colliders\CircleCollider.h">
@@ -82,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="include\ImpulseSolver.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision\CollisionAlgorithms.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

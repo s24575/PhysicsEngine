@@ -8,6 +8,7 @@ struct LineCollider : public Collider
 	virtual CollisionPoints TestCollision(const Transform* transform, const CircleCollider* circle, const Transform* circleTransform) const override;
 	virtual CollisionPoints TestCollision(const Transform* transform, const LineCollider* line, const Transform* lineTransform) const override;
 
-	sf::Vector2f Line;
+	sf::Vector2f Origin;
+	sf::Vector2f Direction;
 	float Distance;
 };

@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Renderer.h"
-#include "Circle.h"
+#include "objects/Circle.h"
 #include "ImpulseSolver.h"
 
 #include "collision/colliders/CircleCollider.h"
