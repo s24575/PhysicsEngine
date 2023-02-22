@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Transform.h"
-#include "colliders/Collider.h"
 #include "colliders/CircleCollider.h"
 #include "colliders/LineCollider.h"
 

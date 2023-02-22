@@ -144,10 +144,10 @@
     <ClCompile Include="src\collision\colliders\LineCollider.cpp" />
     <ClCompile Include="src\collision\CollisionAlgorithms.cpp" />
     <ClCompile Include="src\collision\CollisionPoints.cpp" />
+    <ClCompile Include="src\ImpulseSolver.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\PhysicsWorld.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\Solver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Circle.h" />
@@ -156,6 +156,7 @@
     <ClInclude Include="include\collision\colliders\LineCollider.h" />
     <ClInclude Include="include\collision\Collision.h" />
     <ClInclude Include="include\collision\CollisionPoints.h" />
+    <ClInclude Include="include\ImpulseSolver.h" />
     <ClInclude Include="include\Object.h" />
     <ClInclude Include="include\PhysicsWorld.h" />
     <ClInclude Include="include\Plane.h" />

@@ -2,8 +2,6 @@
 
 #include "collision/Collision.h"
 
-#include <iostream>
-
 void PhysicsWorld::AddObject(Object* object)
 {
 	m_Objects.push_back(object);
@@ -17,6 +15,21 @@ void PhysicsWorld::RemoveObject(Object* object)
 	auto itr = std::find(m_Objects.begin(), m_Objects.end(), object);
 	if (itr != m_Objects.end())
 		m_Objects.erase(itr);
+}
+
+void PhysicsWorld::AddSolver(Solver* solver)
+{
+	m_Solvers.push_back(solver);
+}
+
+void PhysicsWorld::RemoveSolver(Solver* solver)
+{
+	if (!solver)
+		return;
+
+	auto itr = std::find(m_Solvers.begin(), m_Solvers.end(), solver);
+	if (itr != m_Solvers.end())
+		m_Solvers.erase(itr);
 }
 
 void PhysicsWorld::Step(float dt)
@@ -37,14 +50,17 @@ void PhysicsWorld::Step(float dt)
 void PhysicsWorld::ResolveCollisions(float dt)
 {
 	std::vector<Collision> collisions;
-	for (Object* a : m_Objects)
+
+	for (size_t i = 0; i < m_Objects.size(); i++)
 	{
-		for (Object* b : m_Objects)
+		for (size_t j = i + 1; j < m_Objects.size(); j++)
 		{
-			// A and B exists, A and B are not the same
-			if (a != b && a->m_Collider && b->m_Collider)
+			Object* a = m_Objects[i];
+			Object* b = m_Objects[j];
+
+			if (a->GetCollider() && b->GetCollider())
 			{
-				CollisionPoints points = a->m_Collider->TestCollision(a->m_Transform, b->m_Collider, b->m_Transform);
+				CollisionPoints points = a->GetCollider()->TestCollision(a->m_Transform, b->GetCollider(), b->m_Transform);
 
 				if (points.hasCollision)
 				{
@@ -54,9 +70,8 @@ void PhysicsWorld::ResolveCollisions(float dt)
 		}
 	}
 
-	// Solve collisions
-	for (const auto& collision : collisions)
+	for (Solver* solver : m_Solvers)
 	{
-		std::cout << "Collision!\n";
+		solver->Solve(collisions, dt);
 	}
 }

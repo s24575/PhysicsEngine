@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Object.h"
+#include "collision/Collision.h"
 
 #include <vector>
 
 class Solver
 {
 public:
-	void checkCollisions(std::vector<Object*> objects);
+	virtual void Solve(std::vector<Collision>& collisions, float dt) = 0;
 };
