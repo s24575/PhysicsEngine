@@ -20,22 +20,22 @@ namespace algo {
 		float radiusSumSquared = (a->Radius + b->Radius) * (a->Radius + b->Radius);
 
 		// avoid using sqrt: distance <= aRadius + bRadius
-		if (distanceSquared <= radiusSumSquared)
+		if (distanceSquared < radiusSumSquared)
 		{
-			float distance = sqrt(distanceSquared);
-
-			if (distance == 0) {
+			if (distanceSquared == 0.0f) {
 				// The circles are perfectly inside each other, offset one of them to the right
-				aPos.x += aRadius;
-				bPos.x += bRadius;
+				aPos.y += aRadius;
+				bPos.y += bRadius;
 				return { aPos, bPos, sf::Vector2f{0.0f, 1.0f}, std::max(aRadius, bRadius), true};
 			}
 
-			aPos += sf::Vector2f(AtoB.x * aRadius / distance, AtoB.y * aRadius / distance);
-			bPos += sf::Vector2f(BtoA.x * bRadius / distance, BtoA.y * bRadius / distance);
+			float distance = std::sqrt(distanceSquared);
+
+			aPos += aRadius / distance * AtoB;
+			bPos += bRadius / distance * BtoA;
+
 			sf::Vector2f collisionAtoB = bPos - aPos;
-			float depth = sqrt(collisionAtoB.x * collisionAtoB.x + collisionAtoB.y * collisionAtoB.y);
-			//float depth = aRadius + bRadius - distance;
+			float depth = aRadius + bRadius - distance;
 
 			return { aPos, bPos, collisionAtoB, depth, true };
 		}
