@@ -17,8 +17,9 @@ struct Circle : public Object
 
 	virtual void update() override
 	{
-		m_CircleShape.setPosition(Position);
+		m_CircleShape.setPosition(Position - sf::Vector2f(m_CircleShape.getRadius(), m_CircleShape.getRadius()));
 		m_CircleCollider->Center = Position;
+		m_CircleCollider->Radius = m_CircleShape.getRadius();
 	}
 
 	virtual Collider* GetCollider() override

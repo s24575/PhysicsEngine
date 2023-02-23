@@ -45,7 +45,24 @@ namespace algo {
 
 	CollisionPoints FindCircleLineCollisionPoints(const CircleCollider* a, const Transform* ta, const LineCollider* b, const Transform* tb)
 	{
-		return {};
+		sf::Vector2f aCenter = a->Center + ta->Position;
+		float aRadius = a->Radius * ta->Scale.x;
+
+		sf::Vector2f normal = sf::Vector2f(b->Direction.y, -b->Direction.x);
+		sf::Vector2f onPlane = b->Origin + tb->Position;
+
+		sf::Vector2f vctr = aCenter - onPlane;
+		float distance = std::abs(normal.x * vctr.x + normal.y * vctr.y);
+
+		if (distance > aRadius)
+		{
+			return {};
+		}
+
+		sf::Vector2f aPos = aCenter - normal * aRadius;
+		sf::Vector2f bPos = aCenter - normal * distance;
+
+		return CollisionPoints(aPos, bPos, normal, distance, true);
 	}
 
 	CollisionPoints FindLineCircleCollisionPoints(const LineCollider* a, const Transform* ta, const CircleCollider* b, const Transform* tb)

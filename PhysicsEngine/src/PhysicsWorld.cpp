@@ -38,7 +38,8 @@ void PhysicsWorld::Step(float dt)
 
 	for (Object* object : m_Objects)
 	{
-		object->Force = object->Mass * m_Gravity;
+		if(object->hasGravity)
+			object->Force = object->Mass * m_Gravity;
 
 		object->Velocity += object->Force / object->Mass * dt;
 		object->Position += object->Velocity * dt;

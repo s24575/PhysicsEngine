@@ -18,6 +18,8 @@ struct Object : public sf::Drawable//, public sf::Transformable
 	sf::Vector2f Velocity{ 0.0f, 0.0f };
 	sf::Vector2f Force{ 0.0f, 0.0f };
 
+	bool hasGravity = false;
+
 	//Collider* m_Collider = nullptr;
 	Transform* m_Transform = nullptr;
 

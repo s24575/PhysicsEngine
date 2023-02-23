@@ -12,9 +12,8 @@ struct Line : public Object
 		m_Direction(direction),
 		m_Distance(distance)
 	{
-		m_Line[0] = sf::Vertex(origin);
-		sf::Vector2f end = origin + direction * distance;
-		m_Line[1] = sf::Vertex(end);
+		m_Line[0] = sf::Vertex(origin, sf::Color::Red);
+		m_Line[1] = sf::Vertex(origin + direction * distance, sf::Color::Red);
 	}
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override
@@ -25,7 +24,12 @@ struct Line : public Object
 	virtual void update() override
 	{
 		UpdateVertices();
-		m_LineCollider->Origin = m_Origin;
+		if (m_LineCollider)
+		{
+			m_LineCollider->Origin = Position;
+			m_LineCollider->Direction = m_Direction;
+			m_LineCollider->Distance = m_Distance;
+		}
 	}
 
 	virtual Collider* GetCollider() override
@@ -35,9 +39,8 @@ struct Line : public Object
 
 	void UpdateVertices()
 	{
-		m_Line[0].position = m_Origin;
-		sf::Vector2f end = m_Origin + m_Direction * m_Distance;
-		m_Line[1].position = end;
+		m_Line[0].position = Position;
+		m_Line[1].position = Position + m_Direction * m_Distance;
 	}
 
 	sf::Vector2f m_Origin;
