@@ -3,6 +3,8 @@
 #include <cmath>
 #include <algorithm>
 
+#include "glm/vec2.hpp"
+
 namespace algo {
 	CollisionPoints FindCircleCircleCollisionPoints(const CircleCollider* a, const Transform* ta, const CircleCollider* b, const Transform* tb)
 	{
@@ -48,7 +50,7 @@ namespace algo {
 		sf::Vector2f aCenter = a->Center + ta->Position;
 		float aRadius = a->Radius * ta->Scale.x;
 
-		sf::Vector2f normal = sf::Vector2f(b->Direction.y, -b->Direction.x);
+		sf::Vector2f normal = sf::Vector2f(-b->Direction.y, b->Direction.x);
 		sf::Vector2f onPlane = b->Origin + tb->Position;
 
 		sf::Vector2f vctr = aCenter - onPlane;

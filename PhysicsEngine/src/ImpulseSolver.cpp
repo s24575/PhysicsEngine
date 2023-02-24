@@ -12,17 +12,62 @@ void ImpulseSolver::Solve(std::vector<Collision>& collisions, float dt)
 		if (!objectA->hasGravity)
 		{
 			objectB->Velocity = sf::Vector2f(0.0f, 0.0f);
-			objectB->Position += points.Normal * points.Depth * dt;
 		}
 		else if (!objectB->hasGravity)
 		{
 			objectA->Velocity = sf::Vector2f(0.0f, 0.0f);
-			objectA->Position += -points.Normal * points.Depth * dt;
 		}
 		else
 		{
-			objectA->Position += -points.Normal * points.Depth / 2.0f * dt;
+			objectA->Position -= points.Normal * points.Depth / 2.0f * dt;
 			objectB->Position += points.Normal * points.Depth / 2.0f * dt;
 		}
+
+		//CollisionPoints& points = collision.Points;
+
+		//Object* objectA = nullptr;
+		//float aInvertedMass = 1.0f;
+		//sf::Vector2f aVelocity(0.0f, 0.0f);
+
+		//Object* objectB = nullptr;
+		//float bInvertedMass = 1.0f;
+		//sf::Vector2f bVelocity(0.0f, 0.0f);
+
+		//if (collision.ObjectA->hasGravity)
+		//{
+		//	objectA = collision.ObjectA;
+		//	aInvertedMass = 1.0f / objectA->Mass;
+		//	aVelocity = objectA->Velocity;
+		//}
+
+		//if (collision.ObjectB->hasGravity)
+		//{
+		//	objectB = collision.ObjectB;
+		//	bInvertedMass = 1.0f / objectB->Mass;
+		//	bVelocity = objectB->Velocity;
+		//}
+
+		//sf::Vector2f diffVelocity = bVelocity - aVelocity;
+		//float speed = diffVelocity.x * points.Normal.x + diffVelocity.y * points.Normal.y;
+
+		//if (speed >= 0)
+		//	continue;
+
+		//float e = 1.0f;
+		//float j = -(1.0f - e) * speed / (aInvertedMass + bInvertedMass);
+
+		//sf::Vector2f impulse = j * points.Normal;
+
+		//if (objectA)
+		//{
+		//	aVelocity -= impulse * aInvertedMass;
+		//	objectA->Velocity = aVelocity;
+		//}
+
+		//if (objectB)
+		//{
+		//	bVelocity += impulse * bInvertedMass;
+		//	objectB->Velocity = bVelocity;
+		//}
 	}
 }
