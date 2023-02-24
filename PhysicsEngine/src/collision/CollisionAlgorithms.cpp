@@ -3,7 +3,7 @@
 #include <cmath>
 #include <algorithm>
 
-#include "glm/vec2.hpp"
+#include "glm/glm.hpp"
 
 namespace algo {
 	CollisionPoints FindCircleCircleCollisionPoints(const CircleCollider* a, const Transform* ta, const CircleCollider* b, const Transform* tb)
@@ -18,7 +18,7 @@ namespace algo {
 		glm::vec2 AtoB = b->m_Center - a->m_Center;
 		glm::vec2 BtoA = -AtoB;
 
-		float distanceSquared = AtoB.x * AtoB.x + AtoB.y * AtoB.y;
+		float distanceSquared = glm::dot(AtoB, AtoB);
 		float radiusSumSquared = (a->m_Radius + b->m_Radius) * (a->m_Radius + b->m_Radius);
 
 		// avoid using sqrt: distance <= aRadius + bRadius
@@ -54,7 +54,7 @@ namespace algo {
 		glm::vec2 onPlane = b->m_Origin + tb->m_Position;
 
 		glm::vec2 vctr = aCenter - onPlane;
-		float distance = std::abs(normal.x * vctr.x + normal.y * vctr.y);
+		float distance = std::abs(glm::dot(normal, vctr));
 
 		if (distance > aRadius)
 		{
