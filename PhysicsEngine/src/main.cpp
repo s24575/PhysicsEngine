@@ -19,7 +19,7 @@ int main()
 
     physicsWorld.AddSolver(&impulseSolver);
 
-    Line line(sf::Vector2f(0.0f, (float)height / 2), sf::Vector2f(1.0f, 0.0f), (float)width, 1.0f);
+    Line line(glm::vec2(0.0f, (float)height / 2), glm::vec2(1.0f, 0.0f), (float)width, 1.0f);
 
     LineCollider* lineCollider = new LineCollider(line.m_Origin, line.m_Direction, line.m_Distance);
     line.m_LineCollider = lineCollider;
@@ -54,11 +54,11 @@ int main()
                 {
                     if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                        sf::Vector2f mousePosition((float)event.mouseButton.x, (float)event.mouseButton.y);
+                        glm::vec2 mousePosition((float)event.mouseButton.x, (float)event.mouseButton.y);
                         float weight = 1.0f;
                         float radius = 20.0f;
-                        Circle* circle = new Circle(mousePosition, weight, radius);
-                        circle->hasGravity = true;
+                        Circle* circle = new Circle(mousePosition, radius, weight);
+                        circle->m_HasGravity = true;
 
                         CircleCollider* circleCollider = new CircleCollider(mousePosition, radius);
                         circle->m_CircleCollider = circleCollider;

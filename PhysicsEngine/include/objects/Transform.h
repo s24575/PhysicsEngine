@@ -1,10 +1,10 @@
 #pragma once
 
-#include "SFML/System/Vector2.hpp"
+#include "glm/vec2.hpp"
 
 struct Transform
 {
-	sf::Vector2f Position{ 0.0f, 0.0f };
-	sf::Vector2f Scale{ 1.0f, 1.0f };
-	float Rotation = 0.0f;
+	glm::vec2 m_Position{ 0.0f };
+	glm::vec2 m_Scale{ 1.0f };
+	float m_Rotation = 0.0f;
 };

@@ -6,14 +6,14 @@
 
 struct Line : public Object
 {
-	Line(sf::Vector2f origin, sf::Vector2f direction, float distance, float mass)
+	Line(glm::vec2 origin, glm::vec2 direction, float distance, float mass)
 		: Object(origin, mass),
 		m_Origin(origin),
 		m_Direction(direction),
 		m_Distance(distance)
 	{
-		m_Line[0] = sf::Vertex(origin, sf::Color::Red);
-		m_Line[1] = sf::Vertex(origin + direction * distance, sf::Color::Red);
+		m_Line[0] = sf::Vertex(sf::Vector2f(origin.x, origin.y), sf::Color::Red);
+		m_Line[1] = sf::Vertex(sf::Vector2f(origin.x, origin.y) + sf::Vector2f(direction.x, direction.y) * distance, sf::Color::Red);
 	}
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override
@@ -26,9 +26,9 @@ struct Line : public Object
 		UpdateVertices();
 		if (m_LineCollider)
 		{
-			m_LineCollider->Origin = Position;
-			m_LineCollider->Direction = m_Direction;
-			m_LineCollider->Distance = m_Distance;
+			m_LineCollider->m_Origin = m_Position;
+			m_LineCollider->m_Direction = m_Direction;
+			m_LineCollider->m_Distance = m_Distance;
 		}
 	}
 
@@ -39,12 +39,12 @@ struct Line : public Object
 
 	void UpdateVertices()
 	{
-		m_Line[0].position = Position;
-		m_Line[1].position = Position + m_Direction * m_Distance;
+		m_Line[0].position = sf::Vector2f(m_Position.x, m_Position.y);
+		m_Line[1].position = sf::Vector2f(m_Position.x, m_Position.y) + sf::Vector2f(m_Direction.x, m_Direction.y) * m_Distance;
 	}
 
-	sf::Vector2f m_Origin;
-	sf::Vector2f m_Direction;
+	glm::vec2 m_Origin;
+	glm::vec2 m_Direction;
 	float m_Distance;
 
 	sf::Vertex m_Line[2];

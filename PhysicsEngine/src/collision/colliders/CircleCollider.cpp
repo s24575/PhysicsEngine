@@ -2,8 +2,8 @@
 
 #include "collision/CollisionAlgorithms.h"
 
-CircleCollider::CircleCollider(sf::Vector2f center, float radius)
-	: Center(center), Radius(radius) {}
+CircleCollider::CircleCollider(glm::vec2 center, float radius)
+	: m_Center(center), m_Radius(radius) {}
 
 CollisionPoints CircleCollider::TestCollision(const Transform* transform, const Collider* collider, const Transform* colliderTransform) const
 {

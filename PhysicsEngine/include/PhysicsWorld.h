@@ -23,5 +23,5 @@ public:
 private:
 	std::vector<Object*> m_Objects;
 	std::vector<Solver*> m_Solvers;
-	const sf::Vector2f m_Gravity{ 0.0f, 9.81f };
+	glm::vec2 m_Gravity{ 0.0f, 9.81f };
 };

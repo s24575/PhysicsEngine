@@ -6,25 +6,22 @@
 
 struct Object : public sf::Drawable//, public sf::Transformable
 {
-	Object(sf::Vector2f pos, float mass)
-		: Mass(mass),
-		  Position(pos)
-	{}
-
-	sf::Vector2f Position{ 0.0f, 0.0f };
-
-
-	float Mass = 0.0f;
-	sf::Vector2f Velocity{ 0.0f, 0.0f };
-	sf::Vector2f Force{ 0.0f, 0.0f };
-
-	bool hasGravity = false;
-
-	//Collider* m_Collider = nullptr;
-	Transform* m_Transform = nullptr;
+	Object(glm::vec2 position, float mass)
+		: m_Position(position),
+		m_Mass(mass) {}
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override {}
 	virtual void update() {}
 
 	virtual Collider* GetCollider() { return nullptr; }
+
+	glm::vec2 m_Position{ 0.0f, 0.0f };
+
+	float m_Mass = 0.0f;
+	glm::vec2 m_Velocity{ 0.0f, 0.0f };
+	glm::vec2 m_Force{ 0.0f, 0.0f };
+
+	bool m_HasGravity = false;
+
+	Transform* m_Transform = nullptr;
 };

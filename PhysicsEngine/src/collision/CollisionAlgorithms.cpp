@@ -8,18 +8,18 @@
 namespace algo {
 	CollisionPoints FindCircleCircleCollisionPoints(const CircleCollider* a, const Transform* ta, const CircleCollider* b, const Transform* tb)
 	{
-		sf::Vector2f aPos = a->Center + ta->Position;
-		sf::Vector2f bPos = b->Center + tb->Position;
+		glm::vec2 aPos = a->m_Center + ta->m_Position;
+		glm::vec2 bPos = b->m_Center + tb->m_Position;
 
 		// Assume the scale is proportional and the radius is the same
-		float aRadius = a->Radius * ta->Scale.x;
-		float bRadius = b->Radius * tb->Scale.x;
+		float aRadius = a->m_Radius * ta->m_Scale.x;
+		float bRadius = b->m_Radius * tb->m_Scale.x;
 
-		sf::Vector2f AtoB = b->Center - a->Center;
-		sf::Vector2f BtoA = -AtoB;
+		glm::vec2 AtoB = b->m_Center - a->m_Center;
+		glm::vec2 BtoA = -AtoB;
 
 		float distanceSquared = AtoB.x * AtoB.x + AtoB.y * AtoB.y;
-		float radiusSumSquared = (a->Radius + b->Radius) * (a->Radius + b->Radius);
+		float radiusSumSquared = (a->m_Radius + b->m_Radius) * (a->m_Radius + b->m_Radius);
 
 		// avoid using sqrt: distance <= aRadius + bRadius
 		if (distanceSquared < radiusSumSquared)
@@ -28,7 +28,7 @@ namespace algo {
 				// The circles are perfectly inside each other, offset one of them to the top
 				aPos.y += aRadius;
 				bPos.y += bRadius;
-				return { aPos, bPos, sf::Vector2f{0.0f, 1.0f}, std::max(aRadius, bRadius), true};
+				return { aPos, bPos, glm::vec2(0.0f, 1.0f), std::max(aRadius, bRadius), true};
 			}
 
 			float distance = std::sqrt(distanceSquared);
@@ -36,7 +36,7 @@ namespace algo {
 			aPos += aRadius / distance * AtoB;
 			bPos += bRadius / distance * BtoA;
 
-			sf::Vector2f collisionAtoB = bPos - aPos;
+			glm::vec2 collisionAtoB = bPos - aPos;
 			float depth = aRadius + bRadius - distance;
 
 			return { aPos, bPos, collisionAtoB, depth, true };
@@ -47,13 +47,13 @@ namespace algo {
 
 	CollisionPoints FindCircleLineCollisionPoints(const CircleCollider* a, const Transform* ta, const LineCollider* b, const Transform* tb)
 	{
-		sf::Vector2f aCenter = a->Center + ta->Position;
-		float aRadius = a->Radius * ta->Scale.x;
+		glm::vec2 aCenter = a->m_Center + ta->m_Position;
+		float aRadius = a->m_Radius * ta->m_Scale.x;
 
-		sf::Vector2f normal = sf::Vector2f(-b->Direction.y, b->Direction.x);
-		sf::Vector2f onPlane = b->Origin + tb->Position;
+		glm::vec2 normal = glm::vec2(-b->m_Direction.y, b->m_Direction.x);
+		glm::vec2 onPlane = b->m_Origin + tb->m_Position;
 
-		sf::Vector2f vctr = aCenter - onPlane;
+		glm::vec2 vctr = aCenter - onPlane;
 		float distance = std::abs(normal.x * vctr.x + normal.y * vctr.y);
 
 		if (distance > aRadius)
@@ -61,8 +61,8 @@ namespace algo {
 			return {};
 		}
 
-		sf::Vector2f aPos = aCenter - normal * aRadius;
-		sf::Vector2f bPos = aCenter - normal * distance;
+		glm::vec2 aPos = aCenter - normal * aRadius;
+		glm::vec2 bPos = aCenter - normal * distance;
 
 		return CollisionPoints(aPos, bPos, normal, distance, true);
 	}

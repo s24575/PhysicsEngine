@@ -9,18 +9,18 @@ void ImpulseSolver::Solve(std::vector<Collision>& collisions, float dt)
 
 		CollisionPoints& points = collision.Points;
 
-		if (!objectA->hasGravity)
+		if (!objectA->m_HasGravity)
 		{
-			objectB->Velocity = sf::Vector2f(0.0f, 0.0f);
+			objectB->m_Velocity = glm::vec2(0.0f);
 		}
-		else if (!objectB->hasGravity)
+		else if (!objectB->m_HasGravity)
 		{
-			objectA->Velocity = sf::Vector2f(0.0f, 0.0f);
+			objectA->m_Velocity = glm::vec2(0.0f);
 		}
 		else
 		{
-			objectA->Position -= points.Normal * points.Depth / 2.0f * dt;
-			objectB->Position += points.Normal * points.Depth / 2.0f * dt;
+			objectA->m_Position -= points.Normal * points.Depth / 2.0f * dt;
+			objectB->m_Position += points.Normal * points.Depth / 2.0f * dt;
 		}
 
 		//CollisionPoints& points = collision.Points;

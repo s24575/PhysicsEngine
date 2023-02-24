@@ -2,8 +2,8 @@
 
 #include "collision/CollisionAlgorithms.h"
 
-LineCollider::LineCollider(sf::Vector2f origin, sf::Vector2f direction, float distance)
-	: Origin(origin), Direction(direction), Distance(distance) {}
+LineCollider::LineCollider(glm::vec2 origin, glm::vec2 direction, float distance)
+	: m_Origin(origin), m_Direction(direction), m_Distance(distance) {}
 
 CollisionPoints LineCollider::TestCollision(const Transform* transform, const Collider* collider, const Transform* colliderTransform) const
 {

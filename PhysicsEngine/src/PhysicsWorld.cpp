@@ -38,13 +38,13 @@ void PhysicsWorld::Step(float dt)
 
 	for (Object* object : m_Objects)
 	{
-		if(object->hasGravity)
-			object->Force = object->Mass * m_Gravity;
+		if(object->m_HasGravity)
+			object->m_Force = object->m_Mass * m_Gravity;
 
-		object->Velocity += object->Force / object->Mass * dt;
-		object->Position += object->Velocity * dt;
+		object->m_Velocity += object->m_Force / object->m_Mass * dt;
+		object->m_Position += object->m_Velocity * dt;
 
-		object->Force = sf::Vector2f(0.0f, 0.0f);
+		object->m_Force = glm::vec2(0.0f);
 	}
 }
 

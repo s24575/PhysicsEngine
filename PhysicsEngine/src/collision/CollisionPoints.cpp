@@ -2,5 +2,5 @@
 
 CollisionPoints::CollisionPoints() {}
 
-CollisionPoints::CollisionPoints(sf::Vector2f a, sf::Vector2f b, sf::Vector2f normal, float depth, bool hasCollision)
+CollisionPoints::CollisionPoints(glm::vec2 a, glm::vec2 b, glm::vec2 normal, float depth, bool hasCollision)
 	: A(a), B(b), Normal(normal), Depth(depth), hasCollision(hasCollision) {}
