@@ -15,14 +15,13 @@ namespace algo {
 		float aRadius = a->m_Radius * ta->m_Scale.x;
 		float bRadius = b->m_Radius * tb->m_Scale.x;
 
-		glm::vec2 AtoB = b->m_Center - a->m_Center;
-		glm::vec2 BtoA = -AtoB;
+		glm::vec2 AtoB = bPos - aPos;
 
 		float distanceSquared = glm::dot(AtoB, AtoB);
-		float radiusSumSquared = (a->m_Radius + b->m_Radius) * (a->m_Radius + b->m_Radius);
+		float radiusSumSquared = (aRadius + bRadius) * (aRadius + bRadius);
 
 		// avoid using sqrt: distance <= aRadius + bRadius
-		if (distanceSquared < radiusSumSquared)
+		if (distanceSquared <= radiusSumSquared)
 		{
 			if (distanceSquared == 0.0f) {
 				// The circles are perfectly inside each other, offset one of them to the top
@@ -34,7 +33,7 @@ namespace algo {
 			float distance = std::sqrt(distanceSquared);
 
 			aPos += aRadius / distance * AtoB;
-			bPos += bRadius / distance * BtoA;
+			bPos -= bRadius / distance * AtoB;
 
 			glm::vec2 collisionAtoB = bPos - aPos;
 			float depth = aRadius + bRadius - distance;
