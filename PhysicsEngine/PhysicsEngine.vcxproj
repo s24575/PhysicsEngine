@@ -148,24 +148,26 @@
     <ClCompile Include="src\collision\colliders\LineCollider.cpp" />
     <ClCompile Include="src\collision\CollisionAlgorithms.cpp" />
     <ClCompile Include="src\collision\CollisionPoints.cpp" />
-    <ClCompile Include="src\ImpulseSolver.cpp" />
+    <ClCompile Include="src\dynamics\ImpulseSolver.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\PhysicsWorld.cpp" />
+    <ClCompile Include="src\dynamics\PhysicsWorld.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\collision\CollisionObject.h" />
+    <ClInclude Include="include\dynamics\Rigidbody.h" />
     <ClInclude Include="include\objects\Circle.h" />
     <ClInclude Include="include\collision\colliders\CircleCollider.h" />
     <ClInclude Include="include\collision\colliders\Collider.h" />
     <ClInclude Include="include\collision\colliders\LineCollider.h" />
     <ClInclude Include="include\collision\Collision.h" />
     <ClInclude Include="include\collision\CollisionPoints.h" />
-    <ClInclude Include="include\ImpulseSolver.h" />
+    <ClInclude Include="include\dynamics\ImpulseSolver.h" />
     <ClInclude Include="include\objects\Object.h" />
-    <ClInclude Include="include\PhysicsWorld.h" />
+    <ClInclude Include="include\dynamics\PhysicsWorld.h" />
     <ClInclude Include="include\objects\Line.h" />
     <ClInclude Include="include\Renderer.h" />
-    <ClInclude Include="include\Solver.h" />
+    <ClInclude Include="include\dynamics\Solver.h" />
     <ClInclude Include="include\objects\Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

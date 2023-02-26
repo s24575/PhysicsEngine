@@ -3,7 +3,7 @@
 #include "Renderer.h"
 #include "objects/Circle.h"
 #include "objects/Line.h"
-#include "ImpulseSolver.h"
+#include "dynamics/ImpulseSolver.h"
 
 #include "collision/colliders/CircleCollider.h"
 
@@ -11,7 +11,8 @@ int main()
 {
     uint32_t width = 1280;
     uint32_t height = 720;
-    sf::RenderWindow window(sf::VideoMode(width, height), "PhysicsEngine");
+    sf::ContextSettings contextSettings(0, 0, 8);
+    sf::RenderWindow window(sf::VideoMode(width, height), "PhysicsEngine", sf::Style::Default, contextSettings);
 
     Renderer renderer;
     PhysicsWorld physicsWorld;
@@ -19,13 +20,29 @@ int main()
 
     physicsWorld.AddSolver(&impulseSolver);
 
-    Line line(glm::vec2(0.0f, (float)height / 2), glm::vec2(1.0f, 0.0f), (float)width, 1.0f);
+    Line line1(glm::vec2(0.0f, (float)height), glm::vec2(1.0f, 0.0f), (float)width, 1.0f);
+    LineCollider* lineCollider1 = new LineCollider(line1.m_Origin, line1.m_Direction, line1.m_Distance);
+    line1.m_LineCollider = lineCollider1;
+    line1.m_Transform = new Transform();
+    physicsWorld.AddObject(&line1);
 
-    LineCollider* lineCollider = new LineCollider(line.m_Origin, line.m_Direction, line.m_Distance);
-    line.m_LineCollider = lineCollider;
-    line.m_Transform = new Transform();
+    Line line2(glm::vec2((float)width, (float)height), glm::vec2(0.0f, -1.0f), (float)height, 1.0f);
+    LineCollider* lineCollider2 = new LineCollider(line2.m_Origin, line2.m_Direction, line2.m_Distance);
+    line2.m_LineCollider = lineCollider2;
+    line2.m_Transform = new Transform();
+    physicsWorld.AddObject(&line2);
 
-    physicsWorld.AddObject(&line);
+    Line line3(glm::vec2((float)width, 1.0f), glm::vec2(-1.0f, 0.0f), (float)width, 1.0f);
+    LineCollider* lineCollider3 = new LineCollider(line3.m_Origin, line3.m_Direction, line3.m_Distance);
+    line3.m_LineCollider = lineCollider3;
+    line3.m_Transform = new Transform();
+    physicsWorld.AddObject(&line3);
+
+    Line line4(glm::vec2(0.0f, 0.0f), glm::vec2(0.0f, 1.0f), (float)height, 1.0f);
+    LineCollider* lineCollider4 = new LineCollider(line4.m_Origin, line4.m_Direction, line4.m_Distance);
+    line4.m_LineCollider = lineCollider4;
+    line4.m_Transform = new Transform();
+    physicsWorld.AddObject(&line4);
 
     std::vector<Circle*> circles;
 
@@ -48,6 +65,7 @@ int main()
                     height = event.size.height;
                     sf::FloatRect visibleArea(0, 0, (float)width, (float)height);
                     window.setView(sf::View(visibleArea));
+                    clock.restart();
                     break;
                 }
                 case sf::Event::MouseButtonPressed:

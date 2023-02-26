@@ -21,7 +21,7 @@
     <ClCompile Include="src\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\PhysicsWorld.cpp">
+    <ClCompile Include="src\dynamics\PhysicsWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\collision\colliders\CircleCollider.cpp">
@@ -36,7 +36,7 @@
     <ClCompile Include="src\collision\CollisionPoints.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ImpulseSolver.cpp">
+    <ClCompile Include="src\dynamics\ImpulseSolver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,10 +50,10 @@
     <ClInclude Include="include\objects\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\PhysicsWorld.h">
+    <ClInclude Include="include\dynamics\PhysicsWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Solver.h">
+    <ClInclude Include="include\dynamics\Solver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\objects\Transform.h">
@@ -77,11 +77,17 @@
     <ClInclude Include="include\collision\Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ImpulseSolver.h">
+    <ClInclude Include="include\dynamics\ImpulseSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\collision\CollisionAlgorithms.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision\CollisionObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dynamics\Rigidbody.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

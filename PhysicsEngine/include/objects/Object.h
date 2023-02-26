@@ -4,7 +4,7 @@
 
 #include "collision/colliders/Collider.h"
 
-struct Object : public sf::Drawable//, public sf::Transformable
+struct Object : public sf::Drawable
 {
 	Object(glm::vec2 position, float mass)
 		: m_Position(position),

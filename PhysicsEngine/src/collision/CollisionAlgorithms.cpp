@@ -52,18 +52,25 @@ namespace algo {
 		glm::vec2 normal = glm::vec2(-b->m_Direction.y, b->m_Direction.x);
 		glm::vec2 onPlane = b->m_Origin + tb->m_Position;
 
-		glm::vec2 vctr = aCenter - onPlane;
-		float distance = std::abs(glm::dot(normal, vctr));
+		float distance = glm::dot(normal, aCenter - onPlane);
+		float absDistance = std::abs(distance);
 
-		if (distance > aRadius)
+		if (absDistance <= aRadius)
 		{
-			return {};
+			float offset = aRadius - absDistance;
+
+			if (distance < 0.0f)
+			{
+				normal = -normal;
+			}
+
+			glm::vec2 aPos = aCenter - normal * aRadius;
+			glm::vec2 bPos = aCenter - normal * absDistance;
+
+			return CollisionPoints(aPos, bPos, normal, offset, true);
 		}
 
-		glm::vec2 aPos = aCenter - normal * aRadius;
-		glm::vec2 bPos = aCenter - normal * distance;
-
-		return CollisionPoints(aPos, bPos, normal, distance, true);
+		return {};
 	}
 
 	CollisionPoints FindLineCircleCollisionPoints(const LineCollider* a, const Transform* ta, const CircleCollider* b, const Transform* tb)

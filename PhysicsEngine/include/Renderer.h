@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PhysicsWorld.h"
+#include "dynamics/PhysicsWorld.h"
 
 #include <SFML/Graphics.hpp>
 

@@ -1,4 +1,4 @@
-#include "PhysicsWorld.h"
+#include "dynamics/PhysicsWorld.h"
 
 #include "collision/Collision.h"
 
@@ -38,13 +38,14 @@ void PhysicsWorld::Step(float dt)
 
 	for (Object* object : m_Objects)
 	{
-		if(object->m_HasGravity)
+		if (object->m_HasGravity)
+		{
 			object->m_Force = object->m_Mass * m_Gravity;
+			object->m_Velocity += object->m_Force / object->m_Mass * dt;
+			object->m_Position += object->m_Velocity * dt;
 
-		object->m_Velocity += object->m_Force / object->m_Mass * dt;
-		object->m_Position += object->m_Velocity * dt;
-
-		object->m_Force = glm::vec2(0.0f);
+			object->m_Force = glm::vec2(0.0f);
+		}
 	}
 }
 
